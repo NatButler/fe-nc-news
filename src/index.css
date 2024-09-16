@@ -1,8 +1,13 @@
+* {
+  box-sizing: border-box;
+}
+
 :root {
   --lightGrey: #f7f7f7;
   --darkGrey: #4c6272;
   --links: #005eb8;
   --red: #d5281b;
+  --green: #007f3b;
 
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
