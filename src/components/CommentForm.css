@@ -1,0 +1,37 @@
+.comment-form {
+  background-color: var(--darkGrey);
+  color: white;
+  padding: 1px 20px 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.comment-form h4 {
+  margin-bottom: 2px;
+}
+
+.comment-form .error-msg {
+  color: white;
+  background-color: var(--red);
+  padding: 0 3px;
+  border-radius: 5px;
+  font-size: 12px;
+  text-align: center;
+}
+
+.comment-form textarea {
+  width: 100%;
+  resize: vertical;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.comment-form button {
+  background-color: var(--green);
+  border: none;
+  box-shadow: none;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+  font-weight: 700;
+}

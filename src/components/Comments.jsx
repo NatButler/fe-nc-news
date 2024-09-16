@@ -2,10 +2,12 @@ import { useEffect, useState } from 'react';
 import { getArticleComments } from '../utils/api';
 import Loader from './Loader';
 import './Comments.css';
+import CommentForm from './CommentForm';
 
 function Comments({ article_id }) {
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [isLoadingComment, setIsLoadingComment] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
@@ -24,6 +26,7 @@ function Comments({ article_id }) {
   return (
     <section className="clearfix comments-wrapper">
       <h3>Comments</h3>
+      {isLoadingComment && <Loader />}
       <ul className="comments-list">
         {comments.map((comment) => (
           <li key={comment.comment_id}>
@@ -36,6 +39,11 @@ function Comments({ article_id }) {
           </li>
         ))}
       </ul>
+      <CommentForm
+        article_id={article_id}
+        setComments={setComments}
+        setIsLoadingComment={setIsLoadingComment}
+      />
     </section>
   );
 }
