@@ -1,5 +1,6 @@
 .article {
   margin-bottom: 20px;
+  border-bottom: 1px solid var(--darkGrey);
 }
 
 .article h2 {
@@ -23,6 +24,30 @@
 .article .votes {
   padding: 10px 20px;
   background-color: var(--lightGrey);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.article .votes .error-msg {
+  color: white;
+  background-color: var(--red);
+  padding: 0 3px;
+  border-radius: 5px;
+  font-size: 12px;
+  position: absolute;
+  left: 20px;
+  top: 48px;
+}
+
+.article .votes .voting-buttons {
+  display: flex;
+  gap: 5px;
+}
+
+.article .votes .voting-buttons button {
+  cursor: pointer;
 }
 
 .article .author {

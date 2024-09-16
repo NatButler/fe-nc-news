@@ -19,3 +19,12 @@ export const getArticleComments = (articleId) => {
     .get(`/articles/${articleId}/comments`)
     .then((response) => response.data);
 };
+
+export const incrementArticleVotes = (articleId, vote) => {
+  const voteBody = {
+    inc_votes: vote,
+  };
+  return newsApi
+    .patch(`/articles/${articleId}`, voteBody)
+    .then((response) => response.data);
+};
