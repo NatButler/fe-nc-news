@@ -6,8 +6,7 @@
 }
 
 .articles-list li {
-  background-color: #f7f7f7;
-  /* margin-bottom: 15px; */
+  background-color: var(--lightGrey);
   border-radius: 10px;
 }
 

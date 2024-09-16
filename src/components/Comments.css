@@ -1,0 +1,33 @@
+.comments-wrapper {
+  padding: 20px;
+}
+
+.comments-list {
+  list-style: none;
+  padding: 0;
+}
+
+.comments-list li {
+  margin-bottom: 15px;
+}
+
+.comments-list li article {
+  padding: 10px 20px;
+  background-color: var(--lightGrey);
+}
+
+.comments-list li article .author {
+  background-color: var(--darkGrey);
+  padding: 8px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+}
+
+.comments-list li article .author .votes {
+  background-color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  color: var(--darkGrey);
+  font-size: 12px;
+}

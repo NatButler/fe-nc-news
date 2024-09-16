@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { getArticle } from '../utils/api';
 import { formatDateTimeString } from '../utils/helpers';
 import Loader from './Loader';
+import Comments from './Comments';
 import './Article.css';
 
 function Article() {
@@ -22,20 +23,24 @@ function Article() {
   }
 
   return (
-    <article className="article">
-      <h2>
-        {article.title} <span className="heading-topic">{article.topic}</span>
-      </h2>
-      <p>Created: {formatDateTimeString(article.created_at)}</p>
-      <img src={article.article_img_url} />
-      <div className="votes">
-        <p>
-          <strong>Votes:</strong> {article.votes}
-        </p>
-      </div>
-      <p>{article.body}</p>
-      <p className="author">By {article.author}</p>
-    </article>
+    <>
+      <article className="article">
+        <h2>
+          {article.title} <span className="heading-topic">{article.topic}</span>
+        </h2>
+        <p>Created: {formatDateTimeString(article.created_at)}</p>
+        <img src={article.article_img_url} />
+        <div className="votes">
+          <p>
+            <strong>Votes:</strong> {article.votes}
+          </p>
+        </div>
+        <p>{article.body}</p>
+        <p className="author">By {article.author}</p>
+        <div className="clearfix"></div>
+      </article>
+      <Comments article_id={article_id} />
+    </>
   );
 }
 
