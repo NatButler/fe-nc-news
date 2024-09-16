@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { getArticles } from '../utils/api';
 import Loader from './Loader';
 import './Articles.css';
+import { Link } from 'react-router-dom';
 
 function Articles() {
   const [articles, setArticles] = useState([]);
@@ -27,14 +28,16 @@ function Articles() {
       <ul className="articles-list">
         {articles.map((article) => (
           <li key={article.article_id}>
-            <article>
-              <img src={article.article_img_url} alt={article.topic} />
-              <h3>{article.title}</h3>
-              <p>By {article.author}</p>
-              <p>
-                <span className="topic">{article.topic}</span>
-              </p>
-            </article>
+            <Link to={`/articles/${article.article_id}`}>
+              <article>
+                <img src={article.article_img_url} alt={article.topic} />
+                <h3>{article.title}</h3>
+                <p>By {article.author}</p>
+                <p>
+                  <span className="topic">{article.topic}</span>
+                </p>
+              </article>
+            </Link>
           </li>
         ))}
       </ul>
