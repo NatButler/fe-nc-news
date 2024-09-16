@@ -1,0 +1,36 @@
+.articles-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.articles-list li {
+  background-color: #f7f7f7;
+  /* margin-bottom: 15px; */
+  border-radius: 10px;
+}
+
+.articles-list li article {
+  padding: 20px 20px 10px;
+  max-width: 375px;
+}
+
+.articles-list li article img {
+  width: 100%;
+  max-width: 400px;
+}
+
+.articles-list li article .topic {
+  border: 1px solid;
+  padding: 2px 5px;
+  border-radius: 5px;
+}
+
+@media screen and (min-width: 800px) {
+  .articles-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+}
