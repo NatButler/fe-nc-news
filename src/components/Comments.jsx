@@ -1,16 +1,18 @@
-import { useEffect, useState } from 'react';
-import { getArticleComments } from '../utils/api';
+import { useEffect, useState, useContext } from 'react';
+import { UserContext } from '../contexts/UserContext';
+import { deleteComment, getArticleComments } from '../utils/api';
 import Loader from './Loader';
-import './Comments.css';
 import CommentForm from './CommentForm';
+import './Comments.css';
 
 function Comments({ article_id }) {
+  const { currentUser } = useContext(UserContext);
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isLoadingComment, setIsLoadingComment] = useState(false);
+  const [isDeletingCommentId, setIsDeletingCommentId] = useState(false);
 
   useEffect(() => {
-    setIsLoading(true);
     getArticleComments(article_id)
       .then((commentsData) => {
         setComments(commentsData.comments);
@@ -18,6 +20,20 @@ function Comments({ article_id }) {
       })
       .catch((err) => console.log(err));
   }, [article_id]);
+
+  const handleDeleteComment = (comment_id) => {
+    setIsDeletingCommentId(comment_id);
+    deleteComment(comment_id)
+      .then(() => {
+        setComments(
+          comments.filter((comment) => comment.comment_id !== comment_id)
+        );
+      })
+      .catch((err) => console.log(err))
+      .finally(() => {
+        setIsDeletingCommentId(false);
+      });
+  };
 
   if (isLoading) {
     return <Loader />;
@@ -35,6 +51,18 @@ function Comments({ article_id }) {
                 {comment.author} <span className="votes">{comment.votes}</span>
               </p>
               <p>{comment.body}</p>
+              {comment.author === currentUser.username && (
+                <button
+                  type="button"
+                  className="delete-comment-button"
+                  onClick={() => handleDeleteComment(comment.comment_id)}
+                  disabled={isDeletingCommentId === comment.comment_id}
+                >
+                  {isDeletingCommentId === comment.comment_id
+                    ? 'Deleting comment...'
+                    : 'Delete comment'}
+                </button>
+              )}
             </article>
           </li>
         ))}
@@ -43,6 +71,7 @@ function Comments({ article_id }) {
         article_id={article_id}
         setComments={setComments}
         setIsLoadingComment={setIsLoadingComment}
+        currentUser={currentUser}
       />
     </section>
   );
