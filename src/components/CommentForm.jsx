@@ -4,7 +4,12 @@ import './CommentForm.css';
 
 const initFormState = { body: '' };
 
-function CommentForm({ article_id, setComments, setIsLoadingComment }) {
+function CommentForm({
+  article_id,
+  setComments,
+  setIsLoadingComment,
+  currentUser,
+}) {
   const [formData, setFormData] = useState(initFormState);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState('');
@@ -14,7 +19,7 @@ function CommentForm({ article_id, setComments, setIsLoadingComment }) {
     setIsSubmitting(true);
     setIsLoadingComment(true);
     setError('');
-    addComment(article_id, formData)
+    addComment(article_id, formData, currentUser.username)
       .then((commentData) => {
         setComments((currentComments) => [
           commentData.comment,
