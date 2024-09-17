@@ -8,6 +8,7 @@
   --links: #005eb8;
   --red: #d5281b;
   --green: #007f3b;
+  --text: #212b32;
 
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -31,6 +32,7 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
+  color: var(--text);
 }
 
 h1 {

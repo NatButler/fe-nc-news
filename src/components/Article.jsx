@@ -4,6 +4,7 @@ import { getArticle, incrementArticleVotes } from '../utils/api';
 import { formatDateTimeString } from '../utils/helpers';
 import Loader from './Loader';
 import Comments from './Comments';
+import NotFound from './NotFound';
 import './Article.css';
 
 function Article() {
@@ -12,20 +13,28 @@ function Article() {
   const [isLoading, setIsLoading] = useState(true);
   const [votes, setVotes] = useState();
   const [error, setError] = useState('');
+  const [votingError, setVotingError] = useState('');
 
   useEffect(() => {
-    getArticle(article_id).then((articleData) => {
-      setArticle(articleData.article);
-      setVotes(articleData.article.votes);
-      setIsLoading(false);
-    });
+    setError('');
+    getArticle(article_id)
+      .then((articleData) => {
+        setArticle(articleData.article);
+        setVotes(articleData.article.votes);
+      })
+      .catch((err) => {
+        setError(err.response.data.msg);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   }, [article_id]);
 
   const handleVoting = (vote) => {
-    setError('');
+    setVotingError('');
     setVotes((currentVotes) => currentVotes + vote);
     incrementArticleVotes(article_id, vote).catch((err) => {
-      setError('Voting unsuccessful!');
+      setVotingError('Voting unsuccessful!');
       if (vote < 0) {
         setVotes((currentVotes) => currentVotes + 1);
       } else {
@@ -36,6 +45,10 @@ function Article() {
 
   if (isLoading) {
     return <Loader />;
+  }
+
+  if (error) {
+    return <NotFound errorMsg={error} />;
   }
 
   return (
@@ -49,7 +62,7 @@ function Article() {
         <div className="votes">
           <p>
             <strong>Votes:</strong> {votes}
-            {error && <span className="error-msg">{error}</span>}
+            {votingError && <span className="error-msg">{votingError}</span>}
           </p>
           <div className="voting-buttons">
             <button type="button" onClick={() => handleVoting(1)}>
