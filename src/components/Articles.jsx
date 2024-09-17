@@ -1,22 +1,28 @@
 import { useEffect, useState } from 'react';
-import { getArticles } from '../utils/api';
+import { Link, useSearchParams } from 'react-router-dom';
+import { getArticles, getTopics } from '../utils/api';
+import SubNav from './SubNav';
 import Loader from './Loader';
 import './Articles.css';
-import { Link } from 'react-router-dom';
 
 function Articles() {
   const [articles, setArticles] = useState([]);
+  const [topics, setTopics] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const topic = searchParams.get('topic') || undefined;
 
   useEffect(() => {
     setIsLoading(true);
-    getArticles()
-      .then((articlesData) => {
+    Promise.all([getTopics(), getArticles(topic)])
+      .then(([topicsData, articlesData]) => {
+        setTopics(topicsData.topics);
         setArticles(articlesData.articles);
         setIsLoading(false);
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [topic]);
 
   if (isLoading) {
     return <Loader />;
@@ -24,6 +30,7 @@ function Articles() {
 
   return (
     <>
+      <SubNav topics={topics} currentTopic={topic} />
       <h2>Articles</h2>
       <ul className="articles-list">
         {articles.map((article) => (
