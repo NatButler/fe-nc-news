@@ -28,11 +28,31 @@
 .articles-list li article {
   padding: 20px 20px 10px;
   max-width: 375px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.articles-list li:hover {
+  outline: 1px solid var(--darkGrey);
 }
 
 .articles-list li article img {
   width: 100%;
   max-width: 400px;
+}
+
+.articles-list li article h3 {
+  margin-top: 10px;
+}
+
+.articles-list li article .created,
+.articles-list li article .author,
+.articles-list li article .votes,
+.articles-list li article .comments {
+  font-size: 14px;
+  margin-bottom: 5px;
+  margin-top: 0;
 }
 
 .articles-list li article .topic {
