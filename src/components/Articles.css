@@ -1,3 +1,18 @@
+.sorting {
+  padding: 15px;
+  background-color: var(--lightGrey);
+}
+
+.sorting label {
+  margin-right: 5px;
+}
+
+.sorting select {
+  margin-right: 20px;
+  padding: 4px;
+  border: 2px solid var(--darkGrey);
+}
+
 .articles-list {
   list-style: none;
   padding: 0;
@@ -31,5 +46,6 @@
     flex-direction: row;
     flex-wrap: wrap;
     gap: 15px;
+    justify-content: center;
   }
 }

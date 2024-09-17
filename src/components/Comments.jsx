@@ -41,7 +41,7 @@ function Comments({ article_id }) {
 
   return (
     <section className="clearfix comments-wrapper">
-      <h3>Comments</h3>
+      <h3>Comments ({comments.length})</h3>
       {isLoadingComment && <Loader />}
       <ul className="comments-list">
         {comments.map((comment) => (
