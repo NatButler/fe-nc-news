@@ -1,0 +1,17 @@
+.sub-nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 15px;
+}
+
+.sub-nav-list li a {
+  text-transform: capitalize;
+  padding: 5px 10px;
+  border-radius: 15px;
+}
+
+.sub-nav-list li a.active {
+  background-color: var(--lightGrey);
+}
