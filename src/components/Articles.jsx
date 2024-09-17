@@ -3,12 +3,14 @@ import { Link, useSearchParams } from 'react-router-dom';
 import { getArticles, getTopics } from '../utils/api';
 import SubNav from './SubNav';
 import Loader from './Loader';
+import NotFound from './NotFound';
 import './Articles.css';
 
 function Articles() {
   const [articles, setArticles] = useState([]);
   const [topics, setTopics] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState('');
   const [sorting, setSorting] = useState('created_at');
   const [ordering, setOrdering] = useState('DESC');
   const [searchParams, setSearchParams] = useSearchParams();
@@ -16,14 +18,19 @@ function Articles() {
   const topic = searchParams.get('topic') || undefined;
 
   useEffect(() => {
+    setError('');
     setIsLoading(true);
     Promise.all([getTopics(), getArticles(topic, sorting, ordering)])
       .then(([topicsData, articlesData]) => {
         setTopics(topicsData.topics);
         setArticles(articlesData.articles);
-        setIsLoading(false);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        setError(err.response.data.msg);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   }, [topic, sorting, ordering]);
 
   const handleSortingSelected = (ev) => {
@@ -36,6 +43,10 @@ function Articles() {
 
   if (isLoading) {
     return <Loader />;
+  }
+
+  if (error) {
+    return <NotFound errorMsg={error} />;
   }
 
   return (

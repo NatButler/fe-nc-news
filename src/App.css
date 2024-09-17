@@ -3,3 +3,12 @@
   margin: 0 auto;
   padding: 1rem;
 }
+
+.error-msg {
+  background-color: var(--red);
+  color: white;
+  border-radius: 5px;
+  padding: 15px;
+  font-weight: 700;
+  text-align: center;
+}
