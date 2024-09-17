@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { getArticles, getTopics } from '../utils/api';
+import { formatDateTimeString } from '../utils/helpers';
 import SubNav from './SubNav';
 import Loader from './Loader';
 import NotFound from './NotFound';
@@ -11,15 +12,25 @@ function Articles() {
   const [topics, setTopics] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState('');
-  const [sorting, setSorting] = useState('created_at');
-  const [ordering, setOrdering] = useState('DESC');
   const [searchParams, setSearchParams] = useSearchParams();
 
   const topic = searchParams.get('topic') || undefined;
+  const sort = searchParams.get('sort_by') || 'created_at';
+  const order = searchParams.get('order') || 'DESC';
+
+  const [sorting, setSorting] = useState(sort);
+  const [ordering, setOrdering] = useState(order);
 
   useEffect(() => {
     setError('');
     setIsLoading(true);
+
+    if (topic) {
+      setSearchParams({ topic, sort_by: sorting, order: ordering });
+    } else {
+      setSearchParams({ sort_by: sorting, order: ordering });
+    }
+
     Promise.all([getTopics(), getArticles(topic, sorting, ordering)])
       .then(([topicsData, articlesData]) => {
         setTopics(topicsData.topics);
@@ -31,7 +42,7 @@ function Articles() {
       .finally(() => {
         setIsLoading(false);
       });
-  }, [topic, sorting, ordering]);
+  }, [topic, sorting, ordering, setSearchParams]);
 
   const handleSortingSelected = (ev) => {
     setSorting(ev.target.value);
@@ -77,7 +88,14 @@ function Articles() {
               <article>
                 <img src={article.article_img_url} alt={article.topic} />
                 <h3>{article.title}</h3>
-                <p>By {article.author}</p>
+                <p className="created">
+                  Created: {formatDateTimeString(article.created_at)}
+                </p>
+                <p className="author">By: {article.author}</p>
+                <p className="votes">Votes: {article.votes}</p>
+                <p className="comments">
+                  Comment count: {article.comment_count}
+                </p>
                 <p>
                   <span className="topic">{article.topic}</span>
                 </p>
