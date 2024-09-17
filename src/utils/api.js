@@ -48,9 +48,7 @@ export const addComment = (articleId, formData, username) => {
 };
 
 export const deleteComment = (commentId) => {
-  return newsApi
-    .delete(`/comments/${commentId}`)
-    .then((response) => response.data);
+  return newsApi.delete(`/comments/${commentId}`);
 };
 
 export const getTopics = () => {

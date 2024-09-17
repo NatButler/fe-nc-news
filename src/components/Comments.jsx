@@ -11,6 +11,7 @@ function Comments({ article_id }) {
   const [isLoading, setIsLoading] = useState(true);
   const [isLoadingComment, setIsLoadingComment] = useState(false);
   const [isDeletingCommentId, setIsDeletingCommentId] = useState(false);
+  const [deleteError, setDeleteError] = useState('');
 
   useEffect(() => {
     getArticleComments(article_id)
@@ -22,6 +23,7 @@ function Comments({ article_id }) {
   }, [article_id]);
 
   const handleDeleteComment = (comment_id) => {
+    setDeleteError('');
     setIsDeletingCommentId(comment_id);
     deleteComment(comment_id)
       .then(() => {
@@ -29,7 +31,9 @@ function Comments({ article_id }) {
           comments.filter((comment) => comment.comment_id !== comment_id)
         );
       })
-      .catch((err) => console.log(err))
+      .catch((err) => {
+        setDeleteError('It was not possible to delete the comment');
+      })
       .finally(() => {
         setIsDeletingCommentId(false);
       });
@@ -43,6 +47,7 @@ function Comments({ article_id }) {
     <section className="clearfix comments-wrapper">
       <h3>Comments ({comments.length})</h3>
       {isLoadingComment && <Loader />}
+      {deleteError && <p className="error-msg">{deleteError}</p>}
       <ul className="comments-list">
         {comments.map((comment) => (
           <li key={comment.comment_id}>
