@@ -1,7 +1,6 @@
 .comment-form {
-  background-color: var(--darkGrey);
-  color: white;
-  padding: 1px 20px 15px;
+  background-color: var(--lightGrey);
+  padding: 1px 20px 20px;
   display: flex;
   flex-direction: column;
 }
@@ -24,11 +23,13 @@
   resize: vertical;
   padding: 5px;
   margin-bottom: 10px;
+  border: 2px solid var(--darkGrey);
 }
 
 .comment-form button {
   background-color: var(--green);
   border: none;
+  border-radius: 5px;
   box-shadow: none;
   color: white;
   padding: 10px;

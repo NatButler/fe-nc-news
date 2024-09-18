@@ -14,6 +14,20 @@
   border: 1px solid;
 }
 
+.article .content {
+  display: flex;
+  flex-direction: column;
+  padding: 0 10px;
+}
+
+.article .content .body::first-letter {
+  float: left;
+  font-size: 250%;
+  padding: 0 5px 0 0;
+  line-height: 0.9em;
+  vertical-align: bottom;
+}
+
 .article img {
   float: left;
   margin: 0 15px 15px 0;
@@ -48,6 +62,19 @@
 
 .article .votes .voting-buttons button {
   cursor: pointer;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-weight: 700;
+}
+
+.article .votes .voting-buttons .up-vote {
+  background-color: var(--green);
+}
+
+.article .votes .voting-buttons .down-vote {
+  background-color: var(--red);
 }
 
 .article .author {

@@ -65,16 +65,28 @@ function Article() {
             {votingError && <span className="error-msg">{votingError}</span>}
           </p>
           <div className="voting-buttons">
-            <button type="button" onClick={() => handleVoting(1)}>
+            <button
+              type="button"
+              className="up-vote"
+              onClick={() => handleVoting(1)}
+            >
               Up vote
             </button>
-            <button type="button" onClick={() => handleVoting(-1)}>
+            <button
+              type="button"
+              className="down-vote"
+              onClick={() => handleVoting(-1)}
+            >
               Down vote
             </button>
           </div>
         </div>
-        <p>{article.body}</p>
-        <p className="author">By {article.author}</p>
+        <div className="content">
+          <p className="body">{article.body}</p>
+          <p className="author">
+            <em>By {article.author}</em>
+          </p>
+        </div>
         <div className="clearfix"></div>
       </article>
       <Comments article_id={article_id} />

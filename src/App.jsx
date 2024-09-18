@@ -17,6 +17,9 @@ function App() {
           <Route path="/articles/:article_id" element={<Article />}></Route>
         </Routes>
       </main>
+      <footer>
+        <p>&copy; NC News 2024</p>
+      </footer>
     </>
   );
 }

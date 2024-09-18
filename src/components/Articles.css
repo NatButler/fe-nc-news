@@ -8,9 +8,13 @@
 }
 
 .sorting select {
-  margin-right: 20px;
+  margin-right: 8px;
   padding: 4px;
   border: 2px solid var(--darkGrey);
+}
+
+.sorting select:last-child {
+  margin-right: 0;
 }
 
 .articles-list {
