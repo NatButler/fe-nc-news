@@ -55,7 +55,7 @@ function Comments({ article_id }) {
               <p className="author">
                 {comment.author} <span className="votes">{comment.votes}</span>
               </p>
-              <p>{comment.body}</p>
+              <p className="comment-body">{comment.body}</p>
               {comment.author === currentUser.username && (
                 <button
                   type="button"

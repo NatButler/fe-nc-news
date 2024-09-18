@@ -1,7 +1,7 @@
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 1rem;
+  padding: 1rem 1rem 0;
 }
 
 .error-msg {
@@ -11,4 +11,18 @@
   padding: 15px;
   font-weight: 700;
   text-align: center;
+}
+
+main {
+  margin-bottom: 40px;
+}
+
+footer {
+  background-color: var(--darkGrey);
+  color: white;
+  padding: 10px 20px;
+}
+
+footer p {
+  text-align: right;
 }

@@ -55,6 +55,7 @@ function CommentForm({
         onChange={handleInput}
         value={formData.body}
         required
+        placeholder="Type your comment here"
       ></textarea>
       <button type="submit" disabled={isSubmitting}>
         Submit
