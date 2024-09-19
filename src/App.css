@@ -4,6 +4,23 @@
   padding: 1rem 1rem 0;
 }
 
+.skip-to-content-link {
+  display: flex;
+  align-items: center;
+  background: var(--warmYellow);
+  height: 30px;
+  left: 2%;
+  padding: 8px;
+  position: absolute;
+  transform: translateY(-250%);
+  transition: transform 0.3s;
+}
+
+.skip-to-content-link:focus {
+  transform: translateY(0%);
+  outline: 1px solid;
+}
+
 .error-msg {
   background-color: var(--red);
   color: white;

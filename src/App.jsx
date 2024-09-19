@@ -8,8 +8,11 @@ import './App.css';
 function App() {
   return (
     <>
+      <a className="skip-to-content-link" href="#main">
+        Skip to content
+      </a>
       <Header />
-      <main>
+      <main id="main">
         <Routes>
           <Route path="*" element={<NotFound />}></Route>
           <Route path="/" element={<Articles />}></Route>
