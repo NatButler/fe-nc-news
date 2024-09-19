@@ -1,0 +1,9 @@
+.article-links-wrapper {
+  padding: 20px;
+}
+
+@media screen and (min-width: 800px) {
+  .article-links-wrapper ul {
+    padding: 0;
+  }
+}

@@ -4,6 +4,7 @@ import { getArticle, incrementArticleVotes } from '../utils/api';
 import { formatDateTimeString } from '../utils/helpers';
 import Loader from './Loader';
 import Comments from './Comments';
+import ArticleLinks from './ArticleLinks';
 import NotFound from './NotFound';
 import './Article.css';
 
@@ -92,7 +93,14 @@ function Article() {
         </div>
         <div className="clearfix"></div>
       </article>
-      <Comments article_id={article_id} />
+      <section className="layout-row">
+        <div className="layout-column _75">
+          <Comments article_id={article_id} />
+        </div>
+        <aside className="layout-column _25">
+          <ArticleLinks topic={article.topic} article_id={article_id} />
+        </aside>
+      </section>
     </>
   );
 }
