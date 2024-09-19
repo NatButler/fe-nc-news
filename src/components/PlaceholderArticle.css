@@ -1,5 +1,5 @@
 .placeholder-img {
-  width: 335px;
+  width: 100%;
   height: 200px;
   background-color: var(--darkGrey);
   margin-bottom: 15px;
@@ -18,4 +18,10 @@
   background-color: var(--darkGrey);
   margin-bottom: 15px;
   opacity: 0.3;
+}
+
+@media screen and (min-width: 800px) {
+  .placeholder-img {
+    width: 335px;
+  }
 }
