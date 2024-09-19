@@ -1,5 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
+import HomeScreen from './components/HomeScreen';
 import Articles from './components/Articles';
 import Article from './components/Article';
 import NotFound from './components/NotFound';
@@ -15,7 +16,7 @@ function App() {
       <main id="main">
         <Routes>
           <Route path="*" element={<NotFound />}></Route>
-          <Route path="/" element={<Articles />}></Route>
+          <Route path="/" element={<HomeScreen />}></Route>
           <Route path="/articles" element={<Articles />}></Route>
           <Route path="/articles/:article_id" element={<Article />}></Route>
         </Routes>
