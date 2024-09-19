@@ -44,3 +44,35 @@ h1 {
 .clearfix {
   clear: both;
 }
+
+.layout-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.layout-column {
+  flex-basis: 100%;
+  padding: 5px 0;
+  min-width: 0;
+}
+
+@media screen and (min-width: 800px) {
+  .layout-column {
+    flex: 1;
+    margin-right: 20px;
+    position: relative;
+  }
+
+  .layout-column:last-child {
+    margin-right: 0;
+  }
+
+  ._25 {
+    flex: 2.5;
+  }
+
+  ._75 {
+    flex: 7.5;
+  }
+}
