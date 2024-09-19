@@ -5,10 +5,11 @@
 :root {
   --lightGrey: #f7f7f7;
   --darkGrey: #4c6272;
-  --links: #005eb8;
   --red: #d5281b;
   --green: #007f3b;
+  --warmYellow: #ffb81c;
   --text: #212b32;
+  --links: #005eb8;
 
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
