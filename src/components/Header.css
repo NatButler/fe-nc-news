@@ -1,0 +1,17 @@
+.user-bar {
+  background-color: var(--lightGrey);
+  padding: 1px 20px;
+  border-radius: 0 0 5px 5px;
+}
+
+.user-bar p {
+  margin: 5px 0;
+}
+
+.heading-link {
+  color: var(--text);
+}
+
+.heading-link:hover {
+  color: var(--text);
+}
