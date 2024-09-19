@@ -58,7 +58,10 @@ function Article() {
           {article.title} <span className="heading-topic">{article.topic}</span>
         </h2>
         <p>Created: {formatDateTimeString(article.created_at)}</p>
-        <img src={article.article_img_url} />
+        <img
+          src={article.article_img_url}
+          alt={`article image on topic ${article.topic}`}
+        />
         <div className="votes">
           <p>
             <strong>Votes:</strong> {votes}

@@ -27,6 +27,7 @@
 .articles-list li {
   background-color: var(--lightGrey);
   border-radius: 10px;
+  display: flex;
 }
 
 .articles-list li article {
