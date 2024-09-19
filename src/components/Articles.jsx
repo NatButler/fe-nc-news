@@ -18,20 +18,11 @@ function Articles() {
   const sort = searchParams.get('sort_by') || 'created_at';
   const order = searchParams.get('order') || 'DESC';
 
-  const [sorting, setSorting] = useState(sort);
-  const [ordering, setOrdering] = useState(order);
-
   useEffect(() => {
     setError('');
     setIsLoading(true);
 
-    if (topic) {
-      setSearchParams({ topic, sort_by: sorting, order: ordering });
-    } else {
-      setSearchParams({ sort_by: sorting, order: ordering });
-    }
-
-    Promise.all([getTopics(), getArticles(topic, sorting, ordering)])
+    Promise.all([getTopics(), getArticles(topic, sort, order)])
       .then(([topicsData, articlesData]) => {
         setTopics(topicsData.topics);
         setArticles(articlesData.articles);
@@ -42,14 +33,22 @@ function Articles() {
       .finally(() => {
         setIsLoading(false);
       });
-  }, [topic, sorting, ordering, setSearchParams]);
+  }, [topic, sort, order]);
 
   const handleSortingSelected = (ev) => {
-    setSorting(ev.target.value);
+    if (topic) {
+      setSearchParams({ topic, sort_by: ev.target.value, order });
+    } else {
+      setSearchParams({ sort_by: ev.target.value, order });
+    }
   };
 
   const handleOrderingSelected = (ev) => {
-    setOrdering(ev.target.value);
+    if (topic) {
+      setSearchParams({ topic, sort_by: sort, order: ev.target.value });
+    } else {
+      setSearchParams({ sort_by: sort, order: ev.target.value });
+    }
   };
 
   if (isLoading) {
@@ -66,17 +65,13 @@ function Articles() {
       <h2>Articles</h2>
       <div className="sorting">
         <label htmlFor="sorting">Sort by:</label>
-        <select id="sorting" onChange={handleSortingSelected} value={sorting}>
+        <select id="sorting" onChange={handleSortingSelected} value={sort}>
           <option value="created_at">Date</option>
           <option value="comment_count">Comment count</option>
           <option value="votes">Votes</option>
         </select>
         <label htmlFor="ordering">Order:</label>
-        <select
-          id="ordering"
-          onChange={handleOrderingSelected}
-          value={ordering}
-        >
+        <select id="ordering" onChange={handleOrderingSelected} value={order}>
           <option value="DESC">Desc</option>
           <option value="ASC">Asc</option>
         </select>
