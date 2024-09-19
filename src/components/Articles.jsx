@@ -4,6 +4,7 @@ import { getArticles, getTopics } from '../utils/api';
 import { formatDateTimeString } from '../utils/helpers';
 import SubNav from './SubNav';
 import Loader from './Loader';
+import PlaceholderArticle from './PlaceholderArticle';
 import NotFound from './NotFound';
 import './Articles.css';
 
@@ -52,7 +53,15 @@ function Articles() {
   };
 
   if (isLoading) {
-    return <Loader />;
+    return (
+      <Loader>
+        <ul className="articles-list">
+          <PlaceholderArticle />
+          <PlaceholderArticle />
+          <PlaceholderArticle />
+        </ul>
+      </Loader>
+    );
   }
 
   if (error) {
