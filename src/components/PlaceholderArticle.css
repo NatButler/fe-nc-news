@@ -1,0 +1,21 @@
+.placeholder-img {
+  width: 335px;
+  height: 200px;
+  background-color: var(--darkGrey);
+  margin-bottom: 15px;
+  opacity: 0.5;
+}
+
+.placeholder-heading {
+  height: 28px;
+  background-color: var(--darkGrey);
+  margin-bottom: 15px;
+  opacity: 0.3;
+}
+
+.placeholder-meta {
+  height: 125px;
+  background-color: var(--darkGrey);
+  margin-bottom: 15px;
+  opacity: 0.3;
+}
