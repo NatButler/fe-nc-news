@@ -90,12 +90,17 @@ function Articles() {
                   <img src={article.article_img_url} alt={article.topic} />
                   <h3>{article.title}</h3>
                   <p className="created">
-                    Created: {formatDateTimeString(article.created_at)}
+                    <strong>Created:</strong>{' '}
+                    {formatDateTimeString(article.created_at)}
                   </p>
-                  <p className="author">By: {article.author}</p>
-                  <p className="votes">Votes: {article.votes}</p>
+                  <p className="author">
+                    <strong>By:</strong> {article.author}
+                  </p>
+                  <p className="votes">
+                    <strong>Likes:</strong> {article.votes}
+                  </p>
                   <p className="comments">
-                    Comment count: {article.comment_count}
+                    <strong>Comment count:</strong> {article.comment_count}
                   </p>
                   <p>
                     <span className="topic">{article.topic}</span>

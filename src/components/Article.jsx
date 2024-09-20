@@ -6,6 +6,8 @@ import Loader from './Loader';
 import Comments from './Comments';
 import ArticleLinks from './ArticleLinks';
 import NotFound from './NotFound';
+import UpVoteSvg from './UpVoteSvg';
+import DownVoteSvg from './DownVoteSvg';
 import './Article.css';
 
 function Article() {
@@ -67,7 +69,7 @@ function Article() {
         />
         <div className="votes">
           <p>
-            <strong>Votes:</strong> {votes}
+            <strong>Likes:</strong> {votes}
             {votingError && <span className="error-msg">{votingError}</span>}
           </p>
           <div className="voting-buttons">
@@ -76,14 +78,14 @@ function Article() {
               className="up-vote"
               onClick={() => handleVoting(1)}
             >
-              Up vote
+              <UpVoteSvg />
             </button>
             <button
               type="button"
               className="down-vote"
               onClick={() => handleVoting(-1)}
             >
-              Down vote
+              <DownVoteSvg />
             </button>
           </div>
         </div>

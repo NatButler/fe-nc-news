@@ -38,12 +38,16 @@
 }
 
 .article .votes {
-  padding: 10px 20px;
+  padding: 10px 10px 10px 20px;
   background-color: var(--lightGrey);
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: relative;
+}
+
+.article .votes p {
+  margin: 0;
 }
 
 .article .votes .error-msg {
@@ -66,7 +70,7 @@
   cursor: pointer;
   border: none;
   color: white;
-  padding: 5px 10px;
+  padding: 5px 10px 2px;
   border-radius: 4px;
   font-weight: 700;
 }
