@@ -37,6 +37,11 @@
   padding: 0 5px;
 }
 
+.comments-list li article .comment-date {
+  font-size: 12px;
+  padding: 0 5px;
+}
+
 .comments-list li article .delete-comment-button {
   background-color: var(--red);
   box-shadow: none;
