@@ -18,7 +18,8 @@
 
 .comments-list li article .author {
   background-color: var(--darkGrey);
-  padding: 8px;
+  border-radius: 4px;
+  padding: 8px 8px 8px 12px;
   color: white;
   display: flex;
   justify-content: space-between;
