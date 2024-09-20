@@ -20,15 +20,6 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  font-weight: 500;
-  color: var(--links);
-  text-decoration: inherit;
-}
-a:hover {
-  color: var(--links);
-}
-
 body {
   margin: 0;
   min-width: 320px;
@@ -36,9 +27,13 @@ body {
   color: var(--text);
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+a {
+  font-weight: 500;
+  color: var(--links);
+  text-decoration: inherit;
+}
+a:hover {
+  color: var(--links);
 }
 
 .clearfix {
