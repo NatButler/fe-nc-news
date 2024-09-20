@@ -75,6 +75,11 @@
   font-weight: 700;
 }
 
+.article .votes .voting-buttons button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
 .article .votes .voting-buttons .up-vote {
   background-color: var(--green);
 }

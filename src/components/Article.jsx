@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { getArticle, incrementArticleVotes } from '../utils/api';
+import { UserContext } from '../contexts/UserContext';
 import { formatDateTimeString } from '../utils/helpers';
 import Loader from './Loader';
 import Comments from './Comments';
@@ -12,6 +13,7 @@ import './Article.css';
 
 function Article() {
   const { article_id } = useParams();
+  const { currentUser } = useContext(UserContext);
   const [article, setArticle] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [votes, setVotes] = useState();
@@ -77,6 +79,7 @@ function Article() {
               type="button"
               className="up-vote"
               onClick={() => handleVoting(1)}
+              disabled={article.author === currentUser.username}
             >
               <UpVoteSvg />
             </button>
@@ -84,6 +87,7 @@ function Article() {
               type="button"
               className="down-vote"
               onClick={() => handleVoting(-1)}
+              disabled={article.author === currentUser.username}
             >
               <DownVoteSvg />
             </button>
