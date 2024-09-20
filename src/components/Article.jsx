@@ -19,6 +19,7 @@ function Article() {
   useEffect(() => {
     window.scrollTo(0, 0);
     setError('');
+    setIsLoading(true);
     getArticle(article_id)
       .then((articleData) => {
         setArticle(articleData.article);
