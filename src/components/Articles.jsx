@@ -52,18 +52,6 @@ function Articles() {
     }
   };
 
-  if (isLoading) {
-    return (
-      <Loader>
-        <ul className="articles-list">
-          <PlaceholderArticle />
-          <PlaceholderArticle />
-          <PlaceholderArticle />
-        </ul>
-      </Loader>
-    );
-  }
-
   if (error) {
     return <NotFound errorMsg={error} />;
   }
@@ -85,29 +73,39 @@ function Articles() {
           <option value="ASC">Asc</option>
         </select>
       </div>
-      <ul className="articles-list">
-        {articles.map((article) => (
-          <li key={article.article_id}>
-            <Link to={`/articles/${article.article_id}`}>
-              <article>
-                <img src={article.article_img_url} alt={article.topic} />
-                <h3>{article.title}</h3>
-                <p className="created">
-                  Created: {formatDateTimeString(article.created_at)}
-                </p>
-                <p className="author">By: {article.author}</p>
-                <p className="votes">Votes: {article.votes}</p>
-                <p className="comments">
-                  Comment count: {article.comment_count}
-                </p>
-                <p>
-                  <span className="topic">{article.topic}</span>
-                </p>
-              </article>
-            </Link>
-          </li>
-        ))}
-      </ul>
+      {isLoading ? (
+        <Loader>
+          <ul className="articles-list">
+            <PlaceholderArticle />
+            <PlaceholderArticle />
+            <PlaceholderArticle />
+          </ul>
+        </Loader>
+      ) : (
+        <ul className="articles-list">
+          {articles.map((article) => (
+            <li key={article.article_id}>
+              <Link to={`/articles/${article.article_id}`}>
+                <article>
+                  <img src={article.article_img_url} alt={article.topic} />
+                  <h3>{article.title}</h3>
+                  <p className="created">
+                    Created: {formatDateTimeString(article.created_at)}
+                  </p>
+                  <p className="author">By: {article.author}</p>
+                  <p className="votes">Votes: {article.votes}</p>
+                  <p className="comments">
+                    Comment count: {article.comment_count}
+                  </p>
+                  <p>
+                    <span className="topic">{article.topic}</span>
+                  </p>
+                </article>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      )}
     </>
   );
 }
