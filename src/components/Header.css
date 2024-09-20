@@ -1,11 +1,32 @@
+.main-header {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 5px solid var(--darkGrey);
+  align-items: flex-end;
+  margin-bottom: 10px;
+  position: relative;
+}
+
 .user-bar {
   background-color: var(--lightGrey);
-  padding: 1px 20px;
+  padding: 1px 5px;
   border-radius: 0 0 5px 5px;
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 
 .user-bar p {
   margin: 5px 0;
+  font-size: 12px;
+}
+
+h1 {
+  margin: 0 20px 0 0;
+  font-size: 3.2em;
+  line-height: 0.8;
+  border-right: 1px solid;
+  padding: 8px 20px 8px 0;
 }
 
 .heading-link {
@@ -14,4 +35,10 @@
 
 .heading-link:hover {
   color: var(--text);
+}
+
+@media screen and (min-width: 800px) {
+  .main-header {
+    justify-content: flex-start;
+  }
 }

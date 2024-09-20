@@ -8,15 +8,16 @@ function Header() {
   const { currentUser } = useContext(UserContext);
 
   return (
-    <header>
+    <header className="main-header">
       <section className="user-bar">
         <p>
-          <strong>Active user:</strong> {currentUser.username}
+          <strong>User:</strong> {currentUser.username}
         </p>
       </section>
       <h1>
         <Link to="/" className="heading-link">
-          NC News
+          NC
+          <br /> News
         </Link>
       </h1>
       <MainNav />
