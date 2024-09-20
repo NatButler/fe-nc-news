@@ -7,3 +7,13 @@
   font-size: 40px;
   opacity: 0.5;
 }
+
+.loader .elipses {
+  animation: flash 0.7s linear infinite;
+}
+
+@keyframes flash {
+  50% {
+    opacity: 0;
+  }
+}
