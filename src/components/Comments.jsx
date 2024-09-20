@@ -4,6 +4,7 @@ import { deleteComment, getArticleComments } from '../utils/api';
 import Loader from './Loader';
 import CommentForm from './CommentForm';
 import './Comments.css';
+import { formatDateTimeString } from '../utils/helpers';
 
 function Comments({ article_id }) {
   const { currentUser } = useContext(UserContext);
@@ -56,6 +57,9 @@ function Comments({ article_id }) {
                 {comment.author} <span className="votes">{comment.votes}</span>
               </p>
               <p className="comment-body">{comment.body}</p>
+              <p className="comment-date">
+                Posted: {formatDateTimeString(comment.created_at)}
+              </p>
               {comment.author === currentUser.username && (
                 <button
                   type="button"
