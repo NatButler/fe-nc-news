@@ -16,7 +16,7 @@ function Header() {
       </section>
       <h1>
         <Link to="/" className="heading-link">
-          NC
+          <span style={{ color: 'var(--red)' }}>NC</span>
           <br /> News
         </Link>
       </h1>
