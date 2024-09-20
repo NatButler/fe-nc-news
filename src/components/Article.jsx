@@ -17,6 +17,7 @@ function Article() {
   const [votingError, setVotingError] = useState('');
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     setError('');
     getArticle(article_id)
       .then((articleData) => {
