@@ -65,7 +65,7 @@ function Articles() {
         <select id="sorting" onChange={handleSortingSelected} value={sort}>
           <option value="created_at">Date</option>
           <option value="comment_count">Comment count</option>
-          <option value="votes">Votes</option>
+          <option value="votes">Likes</option>
         </select>
         <label htmlFor="ordering">Order:</label>
         <select id="ordering" onChange={handleOrderingSelected} value={order}>
